@@ -1,4 +1,5 @@
 import BulletHost from "./class/BulletHost";
+import BulletPool from "./class/BulletPool";
 import P5Renderer from "./class/P5Renderer";
 
 const sinePattern = new Pattern((x, y, elapsed) => {
@@ -24,7 +25,9 @@ function Pattern(pattern) {
   };
 }
 
+const pool = new BulletPool();
 let host = new BulletHost(window.innerWidth / 4, 25, 0, 1);
+host.setPool(pool);
 
 const numBullets = document.getElementById("numBullets");
 numBullets.oninput = function () {

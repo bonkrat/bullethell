@@ -59,6 +59,11 @@ class BulletHost extends Entity {
     this.spin = true;
     // If true it will osillate back and forth as it spins
     this.oscillate = true;
+    this.pool;
+  }
+
+  setPool(pool) {
+    this.pool = pool;
   }
 
   createBulletGroup() {
@@ -68,7 +73,8 @@ class BulletHost extends Entity {
       this.canvas,
       this.numberBullets,
       this.angle,
-      spreadPattern
+      spreadPattern,
+      this.pool
     );
     this.bulletGroups.push(bullets);
   }

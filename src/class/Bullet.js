@@ -5,11 +5,13 @@ class Bullet extends Entity {
     super(x, y);
     this.r = r;
     this.angle = angle;
+    this.index = 0;
   }
 
-  setPosition(x, y) {
+  setPosition(x, y, angle) {
     this.x = x;
     this.y = y;
+    this.angle = angle;
   }
 
   isOffscreen(p) {
@@ -19,6 +21,8 @@ class Bullet extends Entity {
       this.y - this.r / 2 < 0 ||
       this.y + this.r / 2 > p.height
     ) {
+      return true;
+    } else {
       return false;
     }
   }
