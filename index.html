@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./src/index.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div id="container"></div>
+      <div id="controls">
+        <label>Number of Bullets</label>
+        <input type="range" min="0" max="25" value="1" id="numBullets" />
+        <span id="numBulletsValue">1</span>
+
+        <label>Show Line</label>
+        <input id="showLine" type="checkbox" />
+
+        <label>Hide Bullets</label>
+        <input id="emitBullets" type="checkbox" />
+
+        <label>Spin</label>
+        <input id="spin" checked type="checkbox" />
+
+        <label>Oscillate Bullets</label>
+        <input id="oscillate" checked type="checkbox" />
+
+        <label>Angle</label>
+        <input type="range" min="0" max="360" value="50" id="angle" />
+        <span id="angleValue">50</span>
+
+        <label>Width</label>
+        <input type="range" min="0" max="360" value="45" id="width" />
+        <span id="widthValue">45</span>
+      </div>
+    </div>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
