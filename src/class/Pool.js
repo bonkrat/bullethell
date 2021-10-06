@@ -22,6 +22,12 @@ class Pool {
       this.addToPool(this.factoryFunc());
     }
 
+    if (this.type === "group") {
+      document.getElementById("group_size").innerText = this.poolLength();
+    } else {
+      document.getElementById("bullet_size").innerText = this.poolLength();
+    }
+
     const bullet = this.pool[this.poolIndex];
     this.poolIndex += 1;
     return bullet;

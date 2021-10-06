@@ -43,7 +43,10 @@ const spreadPattern = new Pattern((x, y, index, angle, deltaTime) => {
 class BulletHost extends Entity {
   constructor(x, y, angle, numberBullets) {
     super(x, y);
+
     this.bulletGroups = [];
+    this.bulletGroupsIndex = 0;
+
     this.renderedGroups = [];
     this.angle = angle;
     this.baseAngle = angle;
@@ -67,15 +70,13 @@ class BulletHost extends Entity {
   }
 
   createBulletGroup() {
-    const bullets = new BulletGroup(
-      this.x,
-      this.y,
-      this.canvas,
-      this.numberBullets,
-      this.angle,
-      spreadPattern,
-      this.pool
-    );
+    const bullets = this.pool.getFromPool();
+    bullets.x = this.x;
+    bullets.y = this.y;
+    bullets.amount = this.numberBullets;
+    bullets.angle = this.angle;
+    bullets.generateBullets();
+
     this.bulletGroups.push(bullets);
   }
 
@@ -122,15 +123,18 @@ class BulletHost extends Entity {
         this.timestamp += p.deltaTime;
       }
 
-      if (this.bulletGroups.length) {
-        this.bulletGroups.forEach((group, index) => {
-          // TODO remove this splice!
-          // if (group.bullets.length === 0) {
-          //   this.bulletGroups.splice(index, 1);
-          //   return;
-          // }
+      for (var i = this.bulletGroupsIndex; i < this.bulletGroups.length; i++) {
+        const group = this.bulletGroups[i];
+        if (group.bulletsLength()) {
           group.draw(p);
-        });
+        } else {
+          let temp = this.bulletGroups[this.bulletGroupsIndex];
+          this.bulletGroups[this.bulletGroupsIndex] = group;
+          this.bulletGroups[i] = temp;
+          this.bulletGroupsIndex += 1;
+
+          this.pool.addToPool(group);
+        }
       }
     }
 

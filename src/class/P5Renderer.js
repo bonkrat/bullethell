@@ -17,7 +17,8 @@ class P5Renderer {
     const entity = this.entity;
     return (p) => () => {
       p.background(220);
-      entity.draw(p);
+      //   entity.draw(p);
+      entity.forEach((e) => e.draw(p));
     };
   }
 

@@ -34,7 +34,7 @@ class Bullet extends Entity {
     p.fill("white");
     p.stroke("magenta");
     p.strokeWeight(3);
-    p.ellipse(0, 0, this.r, this.r * 2);
+    p.ellipse(0, 0, this.r, this.r);
     p.translate(0, 0);
     p.pop();
     return this;

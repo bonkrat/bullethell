@@ -21,6 +21,10 @@ class BulletGroup extends Entity {
     this.numOffscreen = 0;
   }
 
+  bulletsLength() {
+    return this.bullets.length - this.bulletsIndex;
+  }
+
   generateBullets() {
     times(this.amount)((index) => {
       const bullet = this.pool.getFromPool();

@@ -1,3 +1,4 @@
+import BulletGroupPool from "./class/BulletGroupPool";
 import BulletHost from "./class/BulletHost";
 import BulletPool from "./class/BulletPool";
 import P5Renderer from "./class/P5Renderer";
@@ -25,50 +26,59 @@ function Pattern(pattern) {
   };
 }
 
-const pool = new BulletPool();
-let host = new BulletHost(window.innerWidth / 4, 25, 0, 1);
-host.setPool(pool);
+const bulletPool = new BulletPool();
+const groupPool = new BulletGroupPool(bulletPool);
 
-const numBullets = document.getElementById("numBullets");
-numBullets.oninput = function () {
-  const num = Number.parseInt(this.value);
-  if (num) {
-    host.numberBullets = num;
-    document.getElementById("numBulletsValue").innerText = this.value;
-  }
-};
+let hosts = [
+  new BulletHost(100, 100, 0, 1),
+  new BulletHost(300, 100, 0, 1),
+  new BulletHost(500, 100, 0, 1),
+];
 
-const showLine = document.getElementById("showLine");
-showLine.addEventListener("change", (event) => {
-  host.showLine = event.target.checked;
+hosts.forEach((host) => {
+  host.setPool(groupPool);
+
+  const numBullets = document.getElementById("numBullets");
+  numBullets.addEventListener("input", function () {
+    const num = Number.parseInt(this.value);
+    if (num) {
+      host.numberBullets = num;
+      document.getElementById("numBulletsValue").innerText = this.value;
+    }
+  });
+
+  const showLine = document.getElementById("showLine");
+  showLine.addEventListener("change", (event) => {
+    host.showLine = event.target.checked;
+  });
+
+  const spin = document.getElementById("spin");
+  spin.addEventListener("change", (event) => {
+    host.spin = event.target.checked;
+  });
+
+  const oscillate = document.getElementById("oscillate");
+  oscillate.addEventListener("change", (event) => {
+    host.oscillate = event.target.checked;
+  });
+
+  const emitBullets = document.getElementById("emitBullets");
+  emitBullets.addEventListener("change", (event) => {
+    host.emitBullets = !event.target.checked;
+  });
+
+  const angle = document.getElementById("angle");
+  angle.addEventListener("input", function () {
+    host.baseAngle = Number.parseInt(this.value);
+    document.getElementById("angleValue").innerText = this.value;
+  });
+
+  const width = document.getElementById("width");
+  width.addEventListener("input", function () {
+    host.width = Number.parseInt(this.value);
+    document.getElementById("widthValue").innerText = this.value;
+  });
 });
 
-const spin = document.getElementById("spin");
-spin.addEventListener("change", (event) => {
-  host.spin = event.target.checked;
-});
-
-const oscillate = document.getElementById("oscillate");
-oscillate.addEventListener("change", (event) => {
-  host.oscillate = event.target.checked;
-});
-
-const emitBullets = document.getElementById("emitBullets");
-emitBullets.addEventListener("change", (event) => {
-  host.emitBullets = !event.target.checked;
-});
-
-const angle = document.getElementById("angle");
-angle.oninput = function () {
-  host.baseAngle = Number.parseInt(this.value);
-  document.getElementById("angleValue").innerText = this.value;
-};
-
-const width = document.getElementById("width");
-width.oninput = function () {
-  host.width = Number.parseInt(this.value);
-  document.getElementById("widthValue").innerText = this.value;
-};
-
-const renderer = new P5Renderer(host, "container");
+const renderer = new P5Renderer(hosts, "container");
 renderer.render();
