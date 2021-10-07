@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "p5": "^1.4.0"
+    "p5": "^1.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   }
 }

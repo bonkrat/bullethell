@@ -15,6 +15,13 @@ body {
     padding: 16px;
 }
 
+.control {
+    padding: 8px 0;
+    display:  flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #container {
     flex: 1;
 }

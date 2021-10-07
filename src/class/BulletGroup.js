@@ -9,6 +9,7 @@ class BulletGroup extends Entity {
     super(x, y, canvas);
     this.angle = angle;
     this.amount = amount;
+    this.spreadWidth = 60;
 
     this.bullets = [];
     this.bulletsIndex = 0;
@@ -56,7 +57,7 @@ class BulletGroup extends Entity {
 
         const velocity = 10 / 100;
         const distance = p.deltaTime * velocity;
-        const width = 60;
+        const width = this.spreadWidth;
         const extraDegrees = (width / length) * adjustedIndex;
 
         const xDistance =
