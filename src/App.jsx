@@ -1,4 +1,5 @@
 import React from "react";
+import { ControlGroup } from "./components/ControlGroup";
 import {
   BulletAmount,
   BulletFrequency,
@@ -11,20 +12,60 @@ import {
   SpreadWidth,
   RotationSpeed,
 } from "./components/controls";
+import { Controls } from "./components/Controls";
+import { useHost } from "./hooks";
 
-export function App({ host }) {
+export function App({ hostInstance }) {
+  const { host, updateHost } = useHost(hostInstance);
+  const {
+    numberBullets,
+    fireFrequency,
+    spreadWidth,
+    showLine,
+    rotate,
+    speed,
+    baseAngle,
+    oscillate,
+    oscillationSpeed,
+    width,
+  } = host;
+
   return (
-    <div>
-      <BulletAmount host={host} />
-      <BulletFrequency host={host} />
-      <SpreadWidth host={host} />
-      <ShowLine host={host} />
-      <Rotate host={host} />
-      <RotationSpeed host={host} />
-      <StartingAngle host={host} />
-      <OscillateBullets host={host} />
-      <OscillationSpeed host={host} />
-      <OscillationWidth host={host} />
-    </div>
+    <Controls>
+      <ControlGroup label="Bullets">
+        <BulletAmount numberBullets={numberBullets} handleChange={updateHost} />
+        <BulletFrequency
+          fireFrequency={fireFrequency}
+          handleChange={updateHost}
+        />
+        <SpreadWidth
+          spreadWidth={spreadWidth}
+          handleChange={updateHost}
+          disabled={numberBullets <= 1}
+        />
+      </ControlGroup>
+
+      <ControlGroup label="Direction">
+        <ShowLine showLine={showLine} handleChange={updateHost} />
+        <StartingAngle
+          baseAngle={baseAngle}
+          handleChange={updateHost}
+          disabled={rotate}
+        />
+        <Rotate rotate={rotate} handleChange={updateHost} />
+        {rotate && <RotationSpeed speed={speed} handleChange={updateHost} />}
+        <OscillateBullets oscillate={oscillate} handleChange={updateHost} />
+
+        {oscillate && (
+          <>
+            <OscillationSpeed
+              oscillationSpeed={oscillationSpeed}
+              handleChange={updateHost}
+            />
+            <OscillationWidth width={width} handleChange={updateHost} />
+          </>
+        )}
+      </ControlGroup>
+    </Controls>
   );
 }

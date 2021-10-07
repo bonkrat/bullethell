@@ -1,25 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Slider } from "../Slider";
 
-export function SpreadWidth({ host }) {
-  const [width, setWidth] = useState(60);
-
-  const handleChange = (e) => {
-    setWidth(e.target.value);
-    host.spreadWidth = width;
+export function SpreadWidth({ handleChange, spreadWidth, disabled }) {
+  const onChange = (e) => {
+    handleChange("spreadWidth", e.target.value);
   };
-
-  useEffect(() => {
-    host.spreadWidth = width;
-  }, []);
 
   return (
     <Slider
       label="Spread Width"
-      handleChange={handleChange}
-      value={width}
+      handleChange={onChange}
+      value={spreadWidth}
       min={0}
       max={360}
+      disabled={disabled}
     />
   );
 }

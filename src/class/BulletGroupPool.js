@@ -3,11 +3,8 @@ import Pool from "./Pool";
 
 class BulletGroupPool extends Pool {
   constructor(bulletPool) {
-    super();
+    super(() => new BulletGroup(0, 0, {}, 1, 0, () => {}, bulletPool), 50);
     this.type = "group";
-    this.setFactoryFunction(
-      () => new BulletGroup(0, 0, {}, 1, 0, () => {}, bulletPool)
-    );
   }
 }
 

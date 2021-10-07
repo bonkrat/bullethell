@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Slider } from "../Slider";
 
-export function OscillationWidth({ host }) {
-  const [width, setWidth] = useState(150);
-
-  const handleChange = (e) => {
-    setWidth(e.target.value);
-    host.width = width;
+export function OscillationWidth({ handleChange, width }) {
+  const onChange = (e) => {
+    handleChange("width", Number.parseInt(e.target.value));
   };
-
-  useEffect(() => {
-    host.width = width;
-  }, []);
 
   return (
     <Slider
-      label="Oscilation Width"
-      handleChange={handleChange}
+      label="Swing Width"
+      handleChange={onChange}
       value={width}
       min={0}
       max={360}

@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Slider } from "../Slider";
 
-export function OscillationSpeed({ host }) {
-  const [speed, setSpeed] = useState(1);
-
-  const handleChange = (e) => {
-    setSpeed(e.target.value);
-    host.oscillationSpeed = e.target.value;
+export function OscillationSpeed({ handleChange, oscillationSpeed }) {
+  const onChange = (e) => {
+    handleChange("oscillationSpeed", e.target.value);
   };
-
-  useEffect(() => {
-    host.oscillationSpeed = speed;
-  }, []);
 
   return (
     <Slider
-      label="Oscillation Speed"
-      handleChange={handleChange}
-      value={speed}
+      label="Swing Speed"
+      handleChange={onChange}
+      value={oscillationSpeed}
       min={0}
-      max={10}
+      max={100}
     />
   );
 }

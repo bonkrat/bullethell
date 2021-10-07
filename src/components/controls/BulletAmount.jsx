@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Slider } from "../Slider";
 
-export function BulletAmount({ host }) {
-  const [numBullets, setNumBullets] = useState(1);
-
-  const handleChange = (e) => {
-    setNumBullets(e.target.value);
-    host.numberBullets = numBullets;
+export function BulletAmount({ handleChange, numberBullets }) {
+  const onChange = (e) => {
+    const val = Number.parseInt(e.target.value);
+    handleChange("numberBullets", val);
   };
-
-  useEffect(() => {
-    host.numberBullets = numBullets;
-  }, []);
 
   return (
     <Slider
       label="Number of Bullets"
-      handleChange={handleChange}
-      value={numBullets}
+      handleChange={onChange}
+      value={numberBullets}
       min={0}
       max={25}
     />

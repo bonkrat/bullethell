@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Slider } from "../Slider";
 
-export function RotationSpeed({ host }) {
-  const [speed, setSpeed] = useState(1);
-
-  const handleChange = (e) => {
+export function RotationSpeed({ handleChange, speed }) {
+  const onChange = (e) => {
     const val = Number.parseInt(e.target.value);
-    setSpeed(val);
-    host.speed = val;
+    handleChange("speed", val);
   };
-
-  useEffect(() => {
-    host.speed = speed;
-  }, []);
 
   return (
     <Slider
       label="Rotation Speed"
-      handleChange={handleChange}
+      handleChange={onChange}
       value={speed}
       min={0}
-      max={25}
+      max={100}
     />
   );
 }

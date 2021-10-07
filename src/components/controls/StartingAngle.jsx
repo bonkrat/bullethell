@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Slider } from "../Slider";
 
-export function StartingAngle({ host }) {
-  const [angle, setAngle] = useState(0);
-
-  const handleChange = (e) => {
+export function StartingAngle({ handleChange, baseAngle, disabled }) {
+  const onChange = (e) => {
     const val = Number.parseInt(e.target.value);
-    setAngle(val);
-    host.baseAngle = val;
+    handleChange("baseAngle", val);
   };
-
-  useEffect(() => {
-    host.baseAngle = angle;
-  }, []);
 
   return (
     <Slider
       label="Starting Angle"
-      handleChange={handleChange}
-      value={angle}
+      handleChange={onChange}
+      value={Math.floor(baseAngle)}
       min={0}
       max={360}
+      disabled={disabled}
     />
   );
 }

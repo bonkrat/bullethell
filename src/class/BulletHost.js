@@ -14,8 +14,8 @@ class BulletHost extends Entity {
     this.timestamp = 0;
     this.elapsed = 0;
     this.numberBullets = numberBullets;
-    this.speed = 0.5;
-    this.oscillationSpeed = 0.5;
+    this.speed = 1;
+    this.oscillationSpeed = 1;
     this.fireFrequency = 5;
     this.showLine = false;
     this.emitBullets = true;
@@ -46,7 +46,8 @@ class BulletHost extends Entity {
 
   calculateAngle(frameCount) {
     if (this.rotate) {
-      this.baseAngle += this.speed;
+      // 10 Mod to make it reasonable.
+      this.baseAngle += this.speed / 10;
       if (this.baseAngle >= 360) {
         this.baseAngle = 360 - this.baseAngle;
       }
@@ -54,11 +55,12 @@ class BulletHost extends Entity {
     this.angle = this.baseAngle;
 
     // Oscillates between min angle and max angle (max = min + width)
-    // 100 is a modifier to make the oscillation more reasonable
+    // 1000 is a modifier to make the oscillation more reasonable
     if (this.oscillate) {
       this.angle =
         this.baseAngle +
-        Math.sin(frameCount / (100 / this.oscillationSpeed)) * (this.width / 2);
+        Math.sin(frameCount / (1000 / this.oscillationSpeed)) *
+          (this.width / 2);
     }
   }
 

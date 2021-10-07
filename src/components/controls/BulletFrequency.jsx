@@ -1,23 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Slider } from "../Slider";
 
-export function BulletFrequency({ host }) {
-  const [freq, setFreq] = useState(5);
-
-  const handleChange = (e) => {
-    setFreq(e.target.value);
-    host.fireFrequency = freq;
+export function BulletFrequency({ handleChange, fireFrequency }) {
+  const onChange = (e) => {
+    const val = Number.parseInt(e.target.value);
+    handleChange("fireFrequency", val);
   };
-
-  useEffect(() => {
-    host.fireFrequency = freq;
-  }, []);
 
   return (
     <Slider
       label="Fire Frequency (bullets / second)"
-      handleChange={handleChange}
-      value={freq}
+      handleChange={onChange}
+      value={fireFrequency}
       min={0}
       max={25}
     />

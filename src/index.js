@@ -9,11 +9,20 @@ import { App } from "./App";
 const bulletPool = new BulletPool();
 const groupPool = new BulletGroupPool(bulletPool);
 
-let host = new BulletHost(window.innerWidth / 4, 150, 0, 1);
+let host = new BulletHost(
+  window.innerWidth / 4,
+  window.innerHeight / 2 - (window.innerHeight / 2) * 0.5,
+  0,
+  1
+);
 host.setPool(groupPool);
+
+window.addEventListener("resize", () => {
+  host.x = window.innerWidth / 4;
+});
 
 const renderer = new P5Renderer(host, "container");
 renderer.render();
 
 const app = document.getElementById("controls");
-ReactDOM.render(<App host={host} />, app);
+ReactDOM.render(<App hostInstance={host} />, app);

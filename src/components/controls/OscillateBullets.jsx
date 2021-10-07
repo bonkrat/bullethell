@@ -1,23 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Checkbox } from "../Checkbox";
 
-export function OscillateBullets({ host }) {
-  const [oscillate, setOscillate] = useState(0);
-
-  const handleChange = (e) => {
-    setOscillate(e.target.checked);
-    host.oscillate = e.target.checked;
+export function OscillateBullets({ handleChange, oscillate }) {
+  const onChange = (e) => {
+    handleChange("oscillate", e.target.checked);
   };
 
-  useEffect(() => {
-    host.oscillate = oscillate;
-  }, []);
-
-  return (
-    <Checkbox
-      label="Oscillate Bullets"
-      checked={oscillate}
-      handleChange={handleChange}
-    />
-  );
+  return <Checkbox label="Swing" checked={oscillate} handleChange={onChange} />;
 }
