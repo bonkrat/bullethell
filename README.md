@@ -1,12 +1,7 @@
-Toggles:
+# Bullet Hell Playground
 
-* Speed
-* Bullet type
-* Oscillators
-* Spin
-* number of hosts/emitters
-* number of bullets in group
-* Frequency they are shot at
-* pausing
-* rotating between patterns
-* movement of emitter?
+[Demo](https://bullethell.vercel.app/)
+
+Nothing fancy here, just a fun tool to practice generating some bullet hell type patterns. I don't take this too seriously - the code isn't good, the UX isn't good, and there are obvious bugs.
+
+Enjoy!

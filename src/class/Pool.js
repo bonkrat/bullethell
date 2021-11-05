@@ -22,28 +22,6 @@ class Pool {
       this.addToPool();
     }
 
-    if (this.type !== "group") {
-      let el = document.querySelector("#pool");
-      if (!el) {
-        el = document.createElement("div");
-        el.id = "pool";
-        document.querySelector("body").prepend(el);
-      }
-
-      el = document.querySelector("#pool");
-      el.innerText = "Bullet Pool: " + this.poolLength();
-    } else {
-      let el = document.querySelector("#grouppool");
-      if (!el) {
-        el = document.createElement("div");
-        el.id = "grouppool";
-        document.querySelector("body").prepend(el);
-      }
-
-      el = document.querySelector("#grouppool");
-      el.innerText = "Group Pool: " + this.poolLength();
-    }
-
     const bullet = this.pool[this.poolIndex];
     this.poolIndex += 1;
     return bullet;

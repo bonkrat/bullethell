@@ -1,5 +1,5 @@
-import { times } from "../utils";
 import Entity from "./Entity";
+import times from "lodash/times";
 
 /**
  * Manages groups of bullets, spreads them over an arc.
@@ -27,7 +27,7 @@ class BulletGroup extends Entity {
   }
 
   generateBullets() {
-    times(this.amount)((index) => {
+    times(this.amount, (index) => {
       const bullet = this.pool.getFromPool();
       bullet.setPosition(this.x, this.y, this.angle);
       bullet.index = index;

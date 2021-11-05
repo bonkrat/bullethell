@@ -33,7 +33,7 @@ class Bullet extends Entity {
     p.rotate(this.angle * (-Math.PI / 180));
     p.fill("white");
     p.stroke("magenta");
-    p.strokeWeight(3);
+    p.strokeWeight(10);
     p.ellipse(0, 0, this.r, this.r);
     p.translate(0, 0);
     p.pop();

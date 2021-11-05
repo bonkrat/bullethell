@@ -2,17 +2,21 @@
   "name": "bullethell",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel index.html",
+    "vercel-build": "parcel build --dist-dir public index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.21",
     "p5": "^1.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "styled-components": "^5.3.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.0"
   }
 }

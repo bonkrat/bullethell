@@ -1,5 +1,6 @@
 body {
     background-color: antiquewhite;
+    padding: 8px;
 }
 
 #app {
@@ -12,11 +13,9 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    padding: 16px;
 }
 
 .control {
-    padding: 8px 0;
     display:  flex;
     justify-content: space-between;
     align-items: center;
@@ -24,4 +23,6 @@ body {
 
 #container {
     flex: 1;
+    display: flex;
+    justify-content: center;
 }

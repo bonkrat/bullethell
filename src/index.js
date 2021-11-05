@@ -9,16 +9,21 @@ import { App } from "./App";
 const bulletPool = new BulletPool();
 const groupPool = new BulletGroupPool(bulletPool);
 
-let host = new BulletHost(
-  window.innerWidth / 4,
-  window.innerHeight / 2 - (window.innerHeight / 2) * 0.5,
-  0,
-  1
-);
+const getHostXPosition = () => {
+  const canEl = document.getElementById("defaultCanvas0");
+
+  if (canEl) {
+    return canEl.width / 2;
+  } else {
+    return (window.innerHeight * 480) / 640 / 2;
+  }
+};
+
+let host = new BulletHost(getHostXPosition(), 240, 0, 1);
 host.setPool(groupPool);
 
 window.addEventListener("resize", () => {
-  host.x = window.innerWidth / 4;
+  host.x = getHostXPosition();
 });
 
 const renderer = new P5Renderer(host, "container");

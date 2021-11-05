@@ -4,26 +4,34 @@ class P5Renderer {
   constructor(entity, container) {
     this.entity = entity;
     this.container = container;
+    this.aspect = 640 / 480;
+    this.color = "#e6e6fa";
   }
+
+  dimensions = (p) => ({
+    x: p.windowHeight / this.aspect,
+    y: p.windowHeight - 32,
+  });
 
   setup() {
     return (p) => () => {
-      p.createCanvas(p.windowWidth / 2, p.windowHeight);
-      p.background(220);
+      p.createCanvas(this.dimensions(p).x, this.dimensions(p).y);
+      p.background(this.color);
     };
   }
 
   draw() {
     const entity = this.entity;
     return (p) => () => {
-      p.background(220);
+      p.clear();
+      p.background(this.color);
       entity.draw(p);
     };
   }
 
   windowResized() {
     return (p) => () => {
-      p.resizeCanvas(p.windowWidth / 2, p.windowHeight);
+      p.resizeCanvas(this.dimensions(p).x, this.dimensions(p).y);
     };
   }
 

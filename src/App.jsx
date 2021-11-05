@@ -11,6 +11,8 @@ import {
   OscillationWidth,
   SpreadWidth,
   RotationSpeed,
+  FireFrequencyWidth,
+  FireFrequencyOscillationSpeed,
 } from "./components/controls";
 import { Controls } from "./components/Controls";
 import { useHost } from "./hooks";
@@ -37,12 +39,9 @@ export function App({ hostInstance }) {
         <BulletFrequency
           fireFrequency={fireFrequency}
           handleChange={updateHost}
+          disabled={numberBullets < 1}
         />
-        <SpreadWidth
-          spreadWidth={spreadWidth}
-          handleChange={updateHost}
-          disabled={numberBullets <= 1}
-        />
+        <SpreadWidth spread={spreadWidth} handleChange={updateHost} max={360} />
       </ControlGroup>
 
       <ControlGroup label="Direction">

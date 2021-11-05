@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+const StyledGroupLabel = styled.h1`
+  margin: 0 0 16px 0;
+`;
+
 const StyledGroupChildren = styled.div`
   padding: 8px;
 
@@ -16,7 +20,7 @@ const StyledGroupChildren = styled.div`
 export function ControlGroup({ label, children }) {
   return (
     <div>
-      <h1>{label}</h1>
+      <StyledGroupLabel>{label}</StyledGroupLabel>
       <StyledGroupChildren>{children}</StyledGroupChildren>
     </div>
   );

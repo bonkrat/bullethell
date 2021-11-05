@@ -1,18 +1,12 @@
 import React from "react";
-import { Slider } from "../Slider";
+import AttributeSlider from "../AttributeSlider";
 
 export function BulletAmount({ handleChange, numberBullets }) {
-  const onChange = (e) => {
-    const val = Number.parseInt(e.target.value);
-    handleChange("numberBullets", val);
-  };
-
   return (
-    <Slider
-      label="Number of Bullets"
-      handleChange={onChange}
-      value={numberBullets}
-      min={0}
+    <AttributeSlider
+      attribute={"numberBullets"}
+      attributeState={numberBullets}
+      handleChange={handleChange}
       max={25}
     />
   );

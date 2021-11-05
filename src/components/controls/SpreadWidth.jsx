@@ -1,19 +1,14 @@
-import React, { useState } from "react";
-import { Slider } from "../Slider";
+import React from "react";
+import AttributeSlider from "../AttributeSlider";
 
-export function SpreadWidth({ handleChange, spreadWidth, disabled }) {
-  const onChange = (e) => {
-    handleChange("spreadWidth", e.target.value);
-  };
-
+export function SpreadWidth({ handleChange, spread }) {
   return (
-    <Slider
-      label="Spread Width"
-      handleChange={onChange}
-      value={spreadWidth}
-      min={0}
+    <AttributeSlider
+      attributeState={spread}
       max={360}
-      disabled={disabled}
+      spread={spread}
+      handleChange={handleChange}
+      attribute="spreadWidth"
     />
   );
 }
