@@ -16,30 +16,30 @@ const SliderOscillatorTitle = styled.div`
   margin-bottom: 8px;
 `;
 
-function AttributeSlider({
+export function AttributeSlider({
   attributeState,
   attribute,
   handleChange,
   max,
   disabled,
 }) {
-  const [showOscillator, setShowOscillator] = useState(false);
+  const [showOscillator, setShowOscillator] = useState(false),
+    onValueChange = (e) => {
+      handleChange(`${attribute}.value`, Number.parseInt(e.target.value));
+    },
+    onOscillateAmountChange = (e) => {
+      handleChange(
+        `${attribute}.oscillateAmount`,
+        Number.parseInt(e.target.value)
+      );
+    },
+    onOscillateSpeedChange = (e) => {
+      handleChange(
+        `${attribute}.oscillateSpeed`,
+        Number.parseInt(e.target.value)
+      );
+    };
 
-  const onValueChange = (e) => {
-    handleChange(`${attribute}.value`, Number.parseInt(e.target.value));
-  };
-  const onOscillateAmountChange = (e) => {
-    handleChange(
-      `${attribute}.oscillateAmount`,
-      Number.parseInt(e.target.value)
-    );
-  };
-  const onOscillateSpeedChange = (e) => {
-    handleChange(
-      `${attribute}.oscillateSpeed`,
-      Number.parseInt(e.target.value)
-    );
-  };
   return (
     <StyledAttributeSlider>
       <Slider
@@ -76,5 +76,3 @@ function AttributeSlider({
     </StyledAttributeSlider>
   );
 }
-
-export default AttributeSlider;

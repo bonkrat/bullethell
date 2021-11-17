@@ -12,6 +12,7 @@ const StyledControls = styled.div`
     margin-bottom: 0;
   }
 `;
+
 export function Controls({ children }) {
   return <StyledControls>{children}</StyledControls>;
 }

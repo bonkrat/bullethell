@@ -1,4 +1,11 @@
+/**
+ * Creates a pool of re-usable entities.
+ */
 class Pool {
+  /**
+   * @param {function} factoryFn A function for creating the entities in the pool
+   * @param {number} initialSize The initial size of the pool.
+   */
   constructor(factoryFn, initialSize = 0) {
     this.pool = [];
     this.poolIndex = 0;
@@ -22,9 +29,9 @@ class Pool {
       this.addToPool();
     }
 
-    const bullet = this.pool[this.poolIndex];
+    const entity = this.pool[this.poolIndex];
     this.poolIndex += 1;
-    return bullet;
+    return entity;
   }
 }
 

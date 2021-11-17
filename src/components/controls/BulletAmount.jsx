@@ -1,5 +1,5 @@
 import React from "react";
-import AttributeSlider from "../AttributeSlider";
+import { AttributeSlider } from "../AttributeSlider";
 
 export function BulletAmount({ handleChange, numberBullets }) {
   return (

@@ -1,20 +1,17 @@
 import React from "react";
-import { ControlGroup } from "./components/ControlGroup";
+import { ControlGroup, Controls } from "./components";
 import {
   BulletAmount,
   BulletFrequency,
-  ShowLine,
-  Rotate,
-  StartingAngle,
   OscillateBullets,
   OscillationSpeed,
   OscillationWidth,
-  SpreadWidth,
+  Rotate,
   RotationSpeed,
-  FireFrequencyWidth,
-  FireFrequencyOscillationSpeed,
+  ShowLine,
+  SpreadWidth,
+  StartingAngle,
 } from "./components/controls";
-import { Controls } from "./components/Controls";
 import { useHost } from "./hooks";
 
 export function App({ hostInstance }) {
