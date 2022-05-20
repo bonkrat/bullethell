@@ -13,7 +13,7 @@ class BulletGroup extends Entity {
     this.bullets = [];
     this.bulletsIndex = 0;
     this.pool = pool;
-    this.generateBullets();
+    // this.generateBullets();
   }
 
   bulletsLength() {
