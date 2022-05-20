@@ -1,5 +1,4 @@
 import React from "react";
-import { ControlGroup, Controls } from "./components";
 import {
   BulletAmount,
   BulletFrequency,
@@ -11,7 +10,9 @@ import {
   ShowLine,
   SpreadWidth,
   StartingAngle,
-} from "./components/controls";
+  ControlGroup,
+  Controls
+} from "./components";
 import { useHost } from "./hooks";
 
 export function App({ hostInstance }) {

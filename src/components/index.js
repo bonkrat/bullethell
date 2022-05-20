@@ -1,7 +1,17 @@
-import { AttributeSlider } from "./AttributeSlider";
-import { Checkbox } from "./Checkbox";
-import { ControlGroup } from "./ControlGroup";
-import { Controls } from "./Controls";
-import { Slider } from "./Slider";
-
-export { AttributeSlider, Checkbox, ControlGroup, Controls, Slider };
+export { AttributeSlider } from "./AttributeSlider";
+export { Checkbox } from "./Checkbox";
+export { ControlGroup } from "./ControlGroup";
+export { Controls } from "./Controls";
+export { Slider } from "./Slider";
+export { BulletAmount } from "./controls/BulletAmount";
+export { BulletFrequency } from "./controls/BulletFrequency";
+export { Rotate } from "./controls/Rotate";
+export { ShowLine } from "./controls/ShowLine";
+export { StartingAngle } from "./controls/StartingAngle";
+export { OscillateBullets } from "./controls/OscillateBullets";
+export { OscillationSpeed } from "./controls/OscillationSpeed";
+export { OscillationWidth } from "./controls/OscillationWidth";
+export { SpreadWidth } from "./controls/SpreadWidth";
+export { RotationSpeed } from "./controls/RotationSpeed";
+export { FireFrequencyWidth } from "./controls/FireFrequencyWidth";
+export { FireFrequencyOscillationSpeed } from "./controls/FireFrequencyOscillationSpeed";
